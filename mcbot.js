@@ -23,7 +23,12 @@ function update() {
           console.log(err);
           //return message.reply('Error getting Minecraft server status...');
       }
-      body = JSON.parse(body);
+    
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        return console.error(e);
+      }
       var status = 'Server offline';
       console.log(body.motd);
       if(body.online) {
